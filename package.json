@@ -1,0 +1,31 @@
+{
+  "name": "b25-netflix-backend",
+  "version": "0.0.1",
+  "description": "Proyecto clon de cinta negra batch 25 en Dev.f Ciudad de México",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Masavi/b25-netflix-backend.git"
+  },
+  "keywords": [
+    "Javascript",
+    "Netflix",
+    "Graphql",
+    "Node"
+  ],
+  "author": "Mauricio Saavedra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Masavi/b25-netflix-backend/issues"
+  },
+  "homepage": "https://github.com/Masavi/b25-netflix-backend#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.3.13"
+  }
+}
