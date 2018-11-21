@@ -1,5 +1,7 @@
 const express = require('express');
 const app = express();
+// Se encarga de la conexión con base de datos...
+require('./db/mongoController');
 const jwt = require('jsonwebtoken');
 const SECRET = require('./utils/config');
 
@@ -72,6 +74,8 @@ app.post('/api/login', (req, res) => {
         });
     })
 });
+
+const Movie = require('./models/Movie');
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
