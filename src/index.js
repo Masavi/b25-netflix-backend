@@ -5,40 +5,28 @@ const SECRET = require('./utils/config');
 
 const PORT =  process.env.PORT || 5000;
 
+const setDecodedToken = (req, decodedToken, next) => {
+    req.decodedToken = decodedToken;
+    next();
+};
+
 let verifyToken = (req, res, next) => {
 
-    const bearerHeader = req.headers['authorization'];
+    const bearerToken = req.headers['authorization'];
 
-    console.log(req.headers);
-
-    if (typeof bearerHeader !== 'undefined') {
-        // Dividir en cada espacio
-        const bearer = bearerHeader.split(' ');
-        console.log(bearer);
-
-        // Sacar el token
-        const bearerToken = bearer[1];
-
-        // Verificación del token
-        jwt.verify(bearerToken, SECRET.verifySecret, (err, decoded) => {
-            if (!err) {
-
-                // Incorporación del token a la petición del cliente
-                req.token = bearerToken;
-
-                // Utilizando el middleware de Next
-                next();
-            } else {
-                res.status(401).send({
+    return bearerToken
+        ? jwt.verify(bearerToken, SECRET.verifySecret, (err, decoded) => {
+            return err
+                ? res.status(401).send({
                     "message": "la autentificación falló..."
-                });
-            }
-        });
-    } else {
-        res.status(401).send({
+                })
+                : setDecodedToken(req, decoded, next); 
+            
+        })
+        : res.status(401).send({
             "message": "no tienes permisos"
         });
-    }
+
 }
 
 app.get('/', (req, res)=>{
