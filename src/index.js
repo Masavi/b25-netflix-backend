@@ -1,12 +1,16 @@
-console.log(process.env.MI_TOKEN_SECRETO);
-//const express = require('express');
+// Importamos módulos para levantar la API
 import express from 'express';
 const app = express();
+
 // Se encarga de la conexión con base de datos...
-require('./db/mongoController');
+// require('./db/mongoController');
+import './db/mongoController';
+
+// Configuración de JWT
 const jwt = require('jsonwebtoken');
 const SECRET = require('./utils/config');
 
+// Configuración del Puerto
 const PORT =  process.env.PORT || 5000;
 
 let verifyToken = (req, res, next) => {
@@ -45,6 +49,13 @@ let verifyToken = (req, res, next) => {
     }
 }
 
+import SERVER from './graphql/schema';
+
+// Middleware: GraphQL
+SERVER.applyMiddleware({
+    app
+  });
+
 app.get('/', (req, res)=>{
     res.send({
         "menssage": "ok"
@@ -76,8 +87,6 @@ app.post('/api/login', (req, res) => {
         });
     })
 });
-
-const Movie = require('./models/Movie');
 
 app.listen(PORT, () => {
     console.log(`Server listening on port ${PORT}`);
