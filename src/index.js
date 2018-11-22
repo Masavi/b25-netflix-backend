@@ -1,3 +1,4 @@
+console.log(process.env.MI_TOKEN_SECRETO);
 //const express = require('express');
 import express from 'express';
 const app = express();

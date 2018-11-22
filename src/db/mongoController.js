@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const mongo_uri = 'mongodb+srv://masavi:abc_123_def@holacluster-efwi5.gcp.mongodb.net/test?retryWrites=true';
+const mongo_uri = `mongodb+srv://masavi:${process.env.DATABASE_SECRET}@holacluster-efwi5.gcp.mongodb.net/test?retryWrites=true`;
 
 mongoose.connect(
     mongo_uri,
