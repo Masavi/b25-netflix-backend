@@ -4,7 +4,7 @@
   "description": "Proyecto clon de cinta negra batch 25 en Dev.f Ciudad de México",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.js",
+    "dev": "nodemon --exec babel-node --presets env,stage-2 src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,5 +27,10 @@
     "express": "^4.16.4",
     "jsonwebtoken": "^8.4.0",
     "mongoose": "^5.3.13"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-2": "^6.24.1"
   }
 }
