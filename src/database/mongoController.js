@@ -6,8 +6,9 @@ mongoose.connect(
     { useNewUrlParser: true },
     (err) => {
         return err 
-            ? console.log('Hubo un error al conectar con la bd...')
+            ? console.error(`!!! Error al intentar conectar con el cluster!!!\n${err}`)
             : console.log('¡Conexión exitosa con Mongo Atlas!');
     }
 );
 
+export default mongoose;

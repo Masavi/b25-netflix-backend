@@ -1,8 +1,6 @@
 // Imports: GraphQL
 import { gql } from 'apollo-server-express';
 
-import mongoose from 'mongoose';
-
 // GraphQL: TypeDefs
 const TYPEDEFS = gql`
 

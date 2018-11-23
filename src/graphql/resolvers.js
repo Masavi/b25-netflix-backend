@@ -1,5 +1,6 @@
 // Mongodb Models
 import Movie from '../models/Movie';
+import mongoose from '../database/mongoController';
 
 // GraphQL: Resolvers
   const RESOLVERS = {
@@ -9,7 +10,10 @@ import Movie from '../models/Movie';
       async allMovies() {
         const movies =  await Movie.find();
         return movies.map( x => {
-          x._id = x._id.toString();
+          let string_id = x._id.toString();
+          console.log(x);
+          x._id = string_id
+          console.log(x);
           return x;
         })
       },

@@ -1,93 +1,17 @@
-// Importamos módulos para levantar la API
 import express from 'express';
 const app = express();
 
-// Se encarga de la conexión con base de datos...
-// require('./db/mongoController');
-import './db/mongoController';
+const PORT = process.env.PORT || 5000;
 
-// Configuración de JWT
-const jwt = require('jsonwebtoken');
-const SECRET = require('./utils/config');
+// Atlas cluster connection 
+import './database/mongoController';
 
-// Configuración del Puerto
-const PORT =  process.env.PORT || 5000;
-
-let verifyToken = (req, res, next) => {
-
-    const bearerHeader = req.headers['authorization'];
-
-    console.log(req.headers);
-
-    if (typeof bearerHeader !== 'undefined') {
-        // Dividir en cada espacio
-        const bearer = bearerHeader.split(' ');
-        console.log(bearer);
-
-        // Sacar el token
-        const bearerToken = bearer[1];
-
-        // Verificación del token
-        jwt.verify(bearerToken, SECRET.verifySecret, (err, decoded) => {
-            if (!err) {
-
-                // Incorporación del token a la petición del cliente
-                req.token = bearerToken;
-
-                // Utilizando el middleware de Next
-                next();
-            } else {
-                res.status(401).send({
-                    "message": "la autentificación falló..."
-                });
-            }
-        });
-    } else {
-        res.status(401).send({
-            "message": "no tienes permisos"
-        });
-    }
-}
-
-import SERVER from './graphql/schema';
+// Apollo Graphql Server
+import ApolloServer from './graphql/schema';
 
 // Middleware: GraphQL
-SERVER.applyMiddleware({
-    app
-  });
+ApolloServer.applyMiddleware({ app });
 
-app.get('/', (req, res)=>{
-    res.send({
-        "menssage": "ok"
-    });
-});
-
-app.post('/api/posts', verifyToken ,(req, res) => {
-
-    res.send({
-        "message": "Post created..."
-    });
-});
-
-app.post('/api/login', (req, res) => {
-    
-    // dummy user
-    const user = {
-        "name": "Mauricio",
-        "last_name": "Saavedra",
-        "mail": "mauricio@mail.com"
-    }
-
-    //jwt.sign({user:user})
-    jwt.sign({user}, SECRET.verifySecret, ( err, token ) => {
-        res.send({
-            "message": "logged-in succesfully",
-            "userData": user,
-            "token": token
-        });
-    })
-});
-
-app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`);
+app.listen( PORT, () => {
+    console.log(`--- Servidor escuchando en el puerto ${PORT} ---`);
 });
