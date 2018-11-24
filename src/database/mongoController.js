@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const mongo_uri = `${process.env.DATABASE_URI}`;
 
 mongoose.connect(
