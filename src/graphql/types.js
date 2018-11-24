@@ -4,8 +4,10 @@ import { gql } from 'apollo-server-express';
 // GraphQL: TypeDefs
 const TYPEDEFS = gql`
 
+scalar ObjectID
+
 type Movie {
-  _id: String
+  _id: ObjectID
   name: String
   director: String
 }
