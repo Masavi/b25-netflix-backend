@@ -13,5 +13,5 @@ import ApolloServer from './graphql/schema';
 ApolloServer.applyMiddleware({ app });
 
 app.listen( PORT, () => {
-    console.log(`--- Servidor escuchando en el puerto ${PORT} ---`);
+    console.log(`\n--- Servidor escuchando en el puerto ${PORT} ---`);
 });

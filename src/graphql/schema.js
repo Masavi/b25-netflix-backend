@@ -1,14 +1,15 @@
-// Imports: GraphQL
+// Imports: GraphQL Apollo Server
 import { ApolloServer } from 'apollo-server-express';
 
 // Imports: GraphQL TypeDefs & Resolvers
-import TYPEDEFS from './types.js';
-import RESOLVERS from './resolvers.js';
+import TypeDefs    from './typedefs/types';
+import Query    from './resolvers/query';
+import Mutation from './resolvers/mutation';
 
 // GraphQL: Schema
 const SERVER = new ApolloServer({
-  typeDefs: TYPEDEFS,
-  resolvers: RESOLVERS,
+  typeDefs: TypeDefs,
+  resolvers: { Query, Mutation },
   playground: {
     endpoint: `http://localhost:5000/graphql`,
     settings: {
@@ -17,6 +18,4 @@ const SERVER = new ApolloServer({
   }
 });
 
-// Exports
-// module.exports = SERVER;
 export default SERVER;

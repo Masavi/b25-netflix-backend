@@ -7,7 +7,7 @@ mongoose.connect(
     (err) => {
         return err 
             ? console.error(`!!! Error al intentar conectar con el cluster!!!\n${err}`)
-            : console.log('¡Conexión exitosa con Mongo Atlas!');
+            : console.log(' --- ¡Conexión exitosa con Mongo Atlas! ---');
     }
 );
 

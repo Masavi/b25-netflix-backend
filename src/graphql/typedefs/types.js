@@ -62,6 +62,8 @@ input MovieInput {
 }
 
 type Mutation {
+
+  # Movie
   createMovie(input: MovieInput) : Movie
   updateMovie(id: ObjectID, input: MovieInput) : Movie
   deleteMovie(id: ObjectID) : String
