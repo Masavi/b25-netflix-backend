@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register user works correctly Should create user correctly 1`] = `
+Object {
+  "data": Object {
+    "signup": Object {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViZmRjZGUyOWRkZjljMDVkMDg5NmE5NyIsImVtYWlsIjoicHJ1ZWJhQGVtYWlsLmNvbSIsImZpcnN0X25hbWUiOiJQcnVlYmEiLCJsYXN0X25hbWUiOiJQcnVlYmEiLCJpYXQiOjE1NDMzNTk5NzB9.8Gsgu1wPi36hQglkbgVx3qScuJkFw34LrZEqcszQFy0",
+    },
+  },
+}
+`;
+
+exports[`Register user works correctly Should retrieve me profile 1`] = `
+Object {
+  "data": Object {
+    "me": Object {
+      "email": "prueba@prueba.com",
+      "first_name": "prueba",
+      "last_name": "prueba",
+    },
+  },
+}
+`;
