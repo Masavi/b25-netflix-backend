@@ -6,6 +6,33 @@ const TYPEDEFS = gql`
 
 scalar ObjectID
 
+type AuthToken {
+    token:String
+}
+
+type User {
+    first_name:String
+    last_name:String
+    email:String
+    birth_date:String
+    gender:String
+    nationality:String
+    #history:[Movie]
+    #favorites:[Movie]
+    is_active:Boolean
+    #user_payment:String
+}
+
+input UserInput {
+    first_name:String!
+    last_name:String!
+    email:String!
+    password:String!
+    birth_date:String
+    gender:String
+    nationality:String
+}
+
 type cast {
   name: String
   role: String
@@ -40,6 +67,9 @@ type Movie {
 }
 
 type Query {
+
+  # User
+  me: User
   
   # Movies
   oneMovie(id: ObjectID) : Movie
@@ -62,6 +92,10 @@ input MovieInput {
 }
 
 type Mutation {
+
+  # User
+  signup(data:UserInput!) : AuthToken
+  login(email:String!,password:String!):AuthToken
 
   # Movie
   createMovie(input: MovieInput) : Movie

@@ -25,6 +25,7 @@
   "homepage": "https://github.com/Masavi/b25-netflix-backend#readme",
   "dependencies": {
     "apollo-server-express": "^2.2.2",
+    "bcrypt": "^3.0.2",
     "express": "^4.16.4",
     "graphql": "^14.0.2",
     "graphql-tools": "^4.0.3",
