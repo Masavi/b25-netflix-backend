@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
-// const mongo_uri = `${process.env.DATABASE_URI}`;
-const mongo_uri = process.env.NODE_ENV === "test" ? `${TEST_DATABASE_URI}`: `${process.env.DATABASE_URI}`
+const mongo_uri = process.env.NODE_ENV === "test" ? `${process.env.TEST_DATABASE_URI}`: `${process.env.DATABASE_URI}`
 
 mongoose.connect(
     mongo_uri,

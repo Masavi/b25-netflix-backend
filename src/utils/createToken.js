@@ -1,5 +1,4 @@
 const jwt =  require('jsonwebtoken')
-import 'dotenv/config'
 
 module.exports = (user) =>{
     const  payload = {

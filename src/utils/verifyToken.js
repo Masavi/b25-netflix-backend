@@ -1,6 +1,5 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/User';
-import 'dotenv/config';
 
 module.exports = function ({ req }) {
     const Authorization = req.get('Authorization')

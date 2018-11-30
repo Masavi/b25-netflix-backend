@@ -1,4 +1,3 @@
-import 'dotenv/config';
 import express from 'express';
 const app = express();
 
@@ -12,6 +11,10 @@ import ApolloServer from './graphql/schema';
 
 // Middleware: GraphQL
 ApolloServer.applyMiddleware({ app });
+
+app.get('/', (req, res) => {
+    res.send({"message": "Bienvenido"});
+});
 
 app.listen( PORT, () => {
     console.log(`\n--- Servidor escuchando en el puerto ${PORT} ---`);

@@ -1,5 +1,5 @@
 // Imports: GraphQL & Schema
-const {graphql} =  require('graphql')
+const { graphql } =  require('graphql')
 const { makeExecutableSchema } = require('graphql-tools')
 
 // Imports: GraphQL TypeDefs & Resolvers
@@ -45,22 +45,28 @@ describe("Register user works correctly", () => {
 
     beforeEach( async () => await setupTest())
 
+    it("probando suma de 2 + 2 = 4...", () => {
+        return expect(2+2).toBe(4);
+    });
 
-    it("Should create user correctly",async () => {
+
+     it("Should create user correctly",async () => {
         const first_name = "Prueba"
         const last_name = "Prueba"
         const email = "prueba@email.com"
-        const password = " miprueba"
+        const password = "miprueba"
 
-        const res = await graphql(schema,mutationRegister,null,{}
+        const res = await graphql(
+                                schema,
+                                mutationRegister,
+                                null,
+                                {}
                                 ,{first_name,last_name,email,password})
-    
-        // expect(res).toMatchSnapshot();
+
         expect(res).toHaveProperty("data")
         expect(res.data).toHaveProperty("signup")
         expect(res.data.signup).toHaveProperty("token")
     })
-
 
     it("Should retrieve me profile",async () => {
 
@@ -68,9 +74,7 @@ describe("Register user works correctly", () => {
 
         const res  =  await graphql(schema,queryMe,null,{user:me},{})
         
-        // expect(res).toMatchSnapshot()
         expect(res.data.me.first_name).toBe(me.first_name)
 
     })
-
 })
