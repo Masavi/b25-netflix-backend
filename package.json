@@ -4,7 +4,6 @@
   "description": "Proyecto clon de cinta negra batch 25 en Dev.f Ciudad de México",
   "main": "index.js",
   "scripts": {
-    "prestart": "node getEnv",
     "start": "nodemon --exec babel-node --presets env,stage-2 src/index.js",
     "test": "jest --forceExit"
   },
