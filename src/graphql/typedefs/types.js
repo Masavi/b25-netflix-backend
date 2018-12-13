@@ -102,6 +102,10 @@ type Mutation {
   updateMovie(id: ObjectID, input: MovieInput) : Movie
   deleteMovie(id: ObjectID) : String
 }
+
+type Subscription {
+  movieAdded: Movie
+}
 `;
 
 // Exports
