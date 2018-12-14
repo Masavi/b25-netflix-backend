@@ -6,6 +6,9 @@ import User  from '../../models/User';
 import createToken      from '../../utils/createToken';
 import comparePasswords from '../../utils/comparePasswords';
 
+// Subscriptions Manager
+import pubsub from '../pubsub';
+
 export default {
 
     // User
@@ -34,7 +37,10 @@ export default {
 
         return await Movie
             .create(input)
-            .then(movie => { return movie.toObject() })
+            .then(movie => {
+                pubsub.publish('movieAdded', { movieAdded: movie });
+                return movie.toObject() 
+            })
             .catch(err => { throw err })
     },
 
