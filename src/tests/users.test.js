@@ -63,7 +63,7 @@ describe("Register user works correctly", () => {
                                 {}
                                 ,{first_name,last_name,email,password})
 
-        expect(res).toHaveProperty("dat")
+        expect(res).toHaveProperty("data")
         expect(res.data).toHaveProperty("signup")
         expect(res.data.signup).toHaveProperty("token")
     })
