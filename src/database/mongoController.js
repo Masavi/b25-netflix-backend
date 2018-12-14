@@ -1,4 +1,3 @@
-require('dotenv/config');
 import mongoose from 'mongoose';
 const mongo_uri = process.env.NODE_ENV === "test" ? `${process.env.TEST_DATABASE_URI}`: `${process.env.DATABASE_URI}`
 
